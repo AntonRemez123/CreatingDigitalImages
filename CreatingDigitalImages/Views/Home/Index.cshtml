@@ -1,0 +1,37 @@
+﻿@using CreatingDigitalImages.ViewModels
+
+
+
+
+
+@{
+
+    
+    if (Model.parent != null)
+    {
+    <h2>"Folder" - @Model.parent</h2>
+        foreach (var directory in Model.directory)
+        {
+    <br />
+    <a asp-action="Index" asp-route-name="@directory.Name">@directory.Name</a>
+        }
+    }
+    else 
+    {
+        foreach (var directory in Model.directory)
+        {
+    <a asp-action="Index" asp-route-name="@directory.Name">@directory.Name</a>
+        }
+    }
+}
+
+<br />
+<br />
+<form  asp-controller="Home" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" /><br>
+    <input asp-action="UploadData" type="submit" value="Загрузить" asp-route-name=""/>
+    <br/>
+    <br/>
+    <input asp-action="ExportData" type="submit" value="Экспорт" asp-route-name="" />
+</form>
+
