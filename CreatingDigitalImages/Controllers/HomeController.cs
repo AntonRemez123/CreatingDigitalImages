@@ -109,7 +109,7 @@ namespace CreatingDigitalImages.Controllers
         public IActionResult ExportData()
         {
             using var workbook = new XLWorkbook();
-            var worksheet = workbook.Worksheets.Add("Users");
+            var worksheet = workbook.Worksheets.Add("Directory");
             var currentRow = 1;
 
             worksheet.Cell(currentRow, 1).Value = "Name";
@@ -127,7 +127,7 @@ namespace CreatingDigitalImages.Controllers
             workbook.SaveAs(stream);
             var content = stream.ToArray();
 
-            return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "users.xlsx");
+            return File(content, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "directory.xlsx");
         }
 
     }
